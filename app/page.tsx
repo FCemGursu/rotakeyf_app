@@ -11,7 +11,7 @@ export default function Home() {
 
         <div className="message">
           <h1>Sitemiz şu an bakımdadır</h1>
-          <p>Yakında açılacaktır</p>
+          <p>Yakında açılacaktır.</p>
         </div>
       </div>
 
