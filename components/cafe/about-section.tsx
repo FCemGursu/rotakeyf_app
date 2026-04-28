@@ -46,7 +46,7 @@ export function AboutSection() {
         </h2>
         <div className="w-24 h-1 bg-primary mx-auto mb-6" />
         <p className="text-gray-400 max-w-xl mx-auto text-base md:text-lg">
-          RotaKeyf — Eskişehir&apos;in kalbinde, hem kafe hem motor tezgahı, hem de muhabbettin adresi.
+          RotaKeyf — Eskişehir&apos;in kalbinde, hem kafe hem de motor üstüne her şey...
         </p>
       </div>
 
