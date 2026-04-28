@@ -21,6 +21,13 @@ type Category = {
   name: string
   type: string
   products: Product[]
+  subCategories: SubCategory[]
+}
+
+type SubCategory = {
+  id: number
+  name: string
+  categoryId: number
 }
 
 type Product = {
@@ -31,6 +38,7 @@ type Product = {
   imageUrl?: string | null
   inStock: boolean
   categoryId: number
+  subCategoryId?: number | null
 }
 
 type ProductForm = {
@@ -39,6 +47,7 @@ type ProductForm = {
   price: string
   imageUrl: string
   inStock: boolean
+  subCategoryId: string
 }
 
 const emptyForm: ProductForm = {
@@ -47,6 +56,7 @@ const emptyForm: ProductForm = {
   price: "",
   imageUrl: "",
   inStock: true,
+  subCategoryId: "",
 }
 
 type MotorListing = {
@@ -96,6 +106,10 @@ export default function AdminPage() {
   const [savingListing, setSavingListing] = useState(false)
   const [uploadingListingImage, setUploadingListingImage] = useState(false)
 
+  const [showAddSubCategory, setShowAddSubCategory] = useState(false)
+  const [subCategoryName, setSubCategoryName] = useState("")
+  const [savingSubCategory, setSavingSubCategory] = useState(false)
+
   const fetchMotorListings = useCallback(async () => {
     setListingsLoading(true)
     try {
@@ -142,6 +156,39 @@ export default function AdminPage() {
   const handleCategorySelect = (cat: Category) => {
     setSelectedCategory(cat)
     fetchProducts(cat.id)
+    setShowAddSubCategory(false)
+    setSubCategoryName("")
+  }
+
+  const handleAddSubCategory = async () => {
+    if (!subCategoryName.trim() || !selectedCategory) return
+    setSavingSubCategory(true)
+    const res = await fetch("/api/subcategories", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: subCategoryName.trim(), categoryId: selectedCategory.id }),
+    })
+    setSavingSubCategory(false)
+    if (res.ok) {
+      setSubCategoryName("")
+      setShowAddSubCategory(false)
+      // Refresh categories to get updated subCategories
+      const catRes = await fetch(`/api/categories?type=${activeTab}`)
+      const catData = await catRes.json()
+      setCategories(catData)
+      const updated = catData.find((c: Category) => c.id === selectedCategory.id)
+      if (updated) setSelectedCategory(updated)
+    }
+  }
+
+  const handleDeleteSubCategory = async (id: number) => {
+    if (!confirm("Bu alt kategoriyi silmek istediğinizden emin misiniz? Bu kategorideki ürünler kategorisize kalır.")) return
+    await fetch(`/api/subcategories/${id}`, { method: "DELETE" })
+    const catRes = await fetch(`/api/categories?type=${activeTab}`)
+    const catData = await catRes.json()
+    setCategories(catData)
+    const updated = catData.find((c: Category) => c.id === selectedCategory?.id)
+    if (updated) setSelectedCategory(updated)
   }
 
   const handleAddCategory = async () => {
@@ -205,6 +252,7 @@ export default function AdminPage() {
       price: product.price ?? "",
       imageUrl: product.imageUrl ?? "",
       inStock: product.inStock,
+      subCategoryId: product.subCategoryId ? String(product.subCategoryId) : "",
     })
     setShowProductModal(true)
   }
@@ -224,6 +272,7 @@ export default function AdminPage() {
       body: JSON.stringify({
         ...productForm,
         categoryId: selectedCategory.id,
+        subCategoryId: productForm.subCategoryId || null,
       }),
     })
 
@@ -545,6 +594,67 @@ export default function AdminPage() {
                 </button>
               </div>
 
+              {/* Alt Kategoriler (sadece motor tabında) */}
+              {activeTab === "motor" && (
+                <div className="mb-5 p-4 bg-secondary rounded-xl border border-border">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm font-medium text-foreground">Alt Kategoriler</span>
+                    <button
+                      onClick={() => { setShowAddSubCategory(!showAddSubCategory); setSubCategoryName("") }}
+                      className="flex items-center gap-1 px-2.5 py-1 bg-primary/10 text-primary rounded-lg text-xs hover:bg-primary/20 transition-colors"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                      Ekle
+                    </button>
+                  </div>
+
+                  {showAddSubCategory && (
+                    <div className="mb-3 flex gap-2">
+                      <input
+                        value={subCategoryName}
+                        onChange={(e) => setSubCategoryName(e.target.value)}
+                        placeholder="Alt kategori adı (örn: Castrol)"
+                        className="flex-1 px-3 py-1.5 bg-background border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-primary transition-colors"
+                        onKeyDown={(e) => e.key === "Enter" && handleAddSubCategory()}
+                        autoFocus
+                      />
+                      <button
+                        onClick={handleAddSubCategory}
+                        disabled={!subCategoryName.trim() || savingSubCategory}
+                        className="px-3 py-1.5 bg-primary text-primary-foreground text-sm rounded-lg hover:opacity-90 disabled:opacity-50 flex items-center gap-1"
+                      >
+                        {savingSubCategory ? <Loader2 className="w-3 h-3 animate-spin" /> : null}
+                        Kaydet
+                      </button>
+                      <button
+                        onClick={() => { setShowAddSubCategory(false); setSubCategoryName("") }}
+                        className="px-3 py-1.5 border border-border text-sm text-muted-foreground rounded-lg hover:text-foreground transition-colors"
+                      >
+                        İptal
+                      </button>
+                    </div>
+                  )}
+
+                  {selectedCategory.subCategories.length === 0 ? (
+                    <p className="text-xs text-muted-foreground">Henüz alt kategori yok. Ekle butonuyla oluşturabilirsiniz.</p>
+                  ) : (
+                    <div className="flex flex-wrap gap-2">
+                      {selectedCategory.subCategories.map((sub) => (
+                        <div key={sub.id} className="flex items-center gap-1 px-3 py-1 bg-background border border-border rounded-full text-sm">
+                          <span className="text-foreground">{sub.name}</span>
+                          <button
+                            onClick={() => handleDeleteSubCategory(sub.id)}
+                            className="text-muted-foreground hover:text-red-400 transition-colors ml-1"
+                          >
+                            <X className="w-3 h-3" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+
               {productLoading ? (
                 <div className="flex flex-col items-center justify-center py-16 gap-3">
                   <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-primary" />
@@ -697,6 +807,26 @@ export default function AdminPage() {
                   className="w-full px-3 py-2 bg-background border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-primary resize-none transition-colors"
                 />
               </div>
+
+              {/* Alt Kategori (sadece motor) */}
+              {activeTab === "motor" && selectedCategory && selectedCategory.subCategories.length > 0 && (
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">
+                    Alt Kategori
+                    <span className="text-muted-foreground text-xs ml-1">(isteğe bağlı)</span>
+                  </label>
+                  <select
+                    value={productForm.subCategoryId}
+                    onChange={(e) => setProductForm({ ...productForm, subCategoryId: e.target.value })}
+                    className="w-full px-3 py-2 bg-background border border-border rounded-lg text-sm text-foreground outline-none focus:border-primary transition-colors"
+                  >
+                    <option value="">— Alt kategori yok —</option>
+                    {selectedCategory.subCategories.map((sub) => (
+                      <option key={sub.id} value={sub.id}>{sub.name}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
 
               {/* Fiyat */}
               <div>

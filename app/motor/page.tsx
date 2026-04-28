@@ -1,8 +1,11 @@
 import type { Metadata } from "next"
 import { Navbar } from "@/components/navbar"
 import { MotorHero } from "@/components/motor/motor-hero"
+import { MotorServices } from "@/components/motor/motor-services"
 import { MotorShop } from "@/components/motor/motor-shop"
 import { MotorSales } from "@/components/motor/motor-sales"
+import { MotorContact } from "@/components/motor/motor-contact"
+import { MotorPartners } from "@/components/motor/motor-partners"
 import { Footer } from "@/components/footer"
 import { prisma } from "@/lib/prisma"
 
@@ -34,7 +37,10 @@ export default async function MotorPage() {
   const [categories, listings] = await Promise.all([
     prisma.category.findMany({
       where: { type: "motor" },
-      include: { products: { orderBy: { createdAt: "asc" } } },
+      include: {
+        products: { orderBy: { createdAt: "asc" } },
+        subCategories: { orderBy: { createdAt: "asc" } },
+      },
       orderBy: { createdAt: "asc" },
     }),
     prisma.motorListing.findMany({
@@ -46,8 +52,11 @@ export default async function MotorPage() {
     <main className="min-h-screen bg-background">
       <Navbar />
       <MotorHero />
+      <MotorServices />
       <MotorShop categories={categories} />
       <MotorSales listings={listings} />
+      <MotorContact />
+      <MotorPartners />
       <Footer />
     </main>
   )

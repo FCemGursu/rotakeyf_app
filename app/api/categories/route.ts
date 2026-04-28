@@ -8,7 +8,10 @@ export async function GET(request: NextRequest) {
 
   const categories = await prisma.category.findMany({
     where: type ? { type } : undefined,
-    include: { products: { orderBy: { createdAt: 'asc' } } },
+    include: {
+      products: { orderBy: { createdAt: 'asc' } },
+      subCategories: { orderBy: { createdAt: 'asc' } },
+    },
     orderBy: { createdAt: 'asc' },
   })
 

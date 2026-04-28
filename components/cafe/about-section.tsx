@@ -15,12 +15,12 @@ const slides = [
     icon: Users,
     title: "Aile Ortamı",
     description: "Burada herkes tanışır, muhabbet akar. Yabancı gelip dost ayrılırsın.",
-    image: "/resim3.jpeg",
+    image: "/motorresim.jpeg",
   },
   {
     icon: Bike,
-    title: "Hem Kafe Hem Tezgah",
-    description: "Kahveni yudumlarken motorunu konuşur, bakımını yaptırır, satılık ilanlarına bakarsın. Her şey bir arada.",
+    title: " Kafe ve Motor Üstüne Aradığınız Her Şey",
+    description: " Kahvenizi ve çayınızı içerken motorunuz için gerekli bakım, ekipman ve aksesuar faaliyetleri....",
     image: "/resim5.jpeg",
   },
 ]
@@ -46,7 +46,7 @@ export function AboutSection() {
         </h2>
         <div className="w-24 h-1 bg-primary mx-auto mb-6" />
         <p className="text-gray-400 max-w-xl mx-auto text-base md:text-lg">
-          Rota Keyf — Eskişehir&apos;in kalbinde, hem kafe hem motor tezgahı, hem de muhabbettin adresi.
+          RotaKeyf — Eskişehir&apos;in kalbinde, hem kafe hem motor tezgahı, hem de muhabbettin adresi.
         </p>
       </div>
 

@@ -16,7 +16,7 @@ export function MotorSales({ listings }: { listings: MotorListing[] }) {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Satışlık Motorsikletler
+            Satılık Motosikletler
           </h2>
           <p className="text-muted-foreground">
             İkinci el satışlık araçlarımız — görsele tıklayarak ilana ulaşabilirsiniz

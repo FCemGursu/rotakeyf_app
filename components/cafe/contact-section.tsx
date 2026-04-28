@@ -5,17 +5,17 @@ export function ContactSection() {
     {
       icon: MapPin,
       title: "Adres",
-      content: "Örnek Mahallesi, Motor Caddesi No:123\nİstanbul, Türkiye",
+      content: "Ertuğrulgazi Mahallesi, Görsem Sokak 6/B,Tepebaşı, Eskişehir",
     },
     {
       icon: Phone,
       title: "Telefon",
-      content: "+90 555 123 45 67",
+      content: "+90 537 301 48 47",
     },
     {
       icon: Clock,
       title: "Çalışma Saatleri",
-      content: "Pazartesi - Pazar\n09:00 - 23:00",
+      content: "Pazartesi - Cuma\n10:30 - 23:30\n\nCumartesi - Pazar\n12:00 - 00:00",
     },
     {
       icon: AtSign,

@@ -6,7 +6,7 @@ export function HeroSection() {
     <section className="relative h-screen flex items-center justify-center">
       <div className="absolute inset-0 z-0">
         <Image
-          src="/cafe-hero.jpg"
+          src="/arkaplan2.png"
           alt="RotaKeyf Cafe"
           fill
           className="object-cover"

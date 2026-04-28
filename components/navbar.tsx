@@ -50,7 +50,7 @@ export function Navbar() {
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                Rota Keyf Motor
+                RotaKeyf Motor
               </Link>
             </div>
 
@@ -118,7 +118,7 @@ export function Navbar() {
                   : "text-muted-foreground"
               }`}
             >
-              Rota Keyf Cafe
+              RotaKeyf Cafe
             </Link>
             <Link
               href="/motor"
@@ -129,7 +129,7 @@ export function Navbar() {
                   : "text-muted-foreground"
               }`}
             >
-              Rota Keyf Motor
+              RotaKeyf Motor
             </Link>
 
             {!isMotorPage && (

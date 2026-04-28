@@ -11,24 +11,18 @@ export async function PUT(
   }
 
   const { id } = await params
-  const { name, description, price, imageUrl, inStock, categoryId, subCategoryId } =
-    await request.json()
+  const { name } = await request.json()
 
-  const product = await prisma.product.update({
+  if (!name?.trim()) {
+    return NextResponse.json({ error: 'İsim boş olamaz' }, { status: 400 })
+  }
+
+  const subCategory = await prisma.subCategory.update({
     where: { id: parseInt(id) },
-    data: {
-      ...(name !== undefined && { name: name.trim() }),
-      ...(description !== undefined && { description: description?.trim() || null }),
-      ...(price !== undefined && { price: price?.trim() || null }),
-      ...(imageUrl !== undefined && { imageUrl: imageUrl || null }),
-      ...(inStock !== undefined && { inStock }),
-      ...(categoryId !== undefined && { categoryId: parseInt(categoryId) }),
-      subCategoryId: subCategoryId ? parseInt(subCategoryId) : null,
-    },
-    include: { category: true },
+    data: { name: name.trim() },
   })
 
-  return NextResponse.json(product)
+  return NextResponse.json(subCategory)
 }
 
 export async function DELETE(
@@ -41,7 +35,7 @@ export async function DELETE(
 
   const { id } = await params
 
-  await prisma.product.delete({
+  await prisma.subCategory.delete({
     where: { id: parseInt(id) },
   })
 

@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Bebas_Neue, Pacifico } from "next/font/google";
 import "./globals.css";
+import { CookieBanner } from "@/components/cookie-banner"
 
 const bebasNeue = Bebas_Neue({
   variable: "--font-bebas-neue",
@@ -95,7 +96,10 @@ export default function RootLayout({
       lang="tr"
       className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${pacifico.variable} antialiased`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <CookieBanner />
+      </body>
     </html>
   );
 }

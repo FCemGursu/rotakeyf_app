@@ -5,6 +5,7 @@ import { AboutSection } from "@/components/cafe/about-section"
 import { GallerySection } from "@/components/cafe/gallery-section"
 import { MenuSection } from "@/components/cafe/menu-section"
 import { ContactSection } from "@/components/cafe/contact-section"
+import { MotorPartners } from "@/components/motor/motor-partners"
 import { Footer } from "@/components/footer"
 import { prisma } from "@/lib/prisma"
 
@@ -42,6 +43,7 @@ export default async function Home() {
       <GallerySection />
       <MenuSection categories={categories} />
       <ContactSection />
+      <MotorPartners />
       <Footer />
     </main>
   )

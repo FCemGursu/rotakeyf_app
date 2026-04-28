@@ -4,10 +4,10 @@ export function GallerySection() {
   const images = [
     { src: "/Resim1.jpeg", alt: "Kafe 1" },
     { src: "/resim2.jpeg", alt: "Kafe 2" },
-    { src: "/resim3.jpeg", alt: "Kafe 3" },
+    { src: "/motorresim.jpeg", alt: "Kafe 3" },
     { src: "/resim4.jpeg", alt: "Kafe 4" },
     { src: "/resim5.jpeg", alt: "Kafe 5" },
-    { src: "/resim6.png", alt: "Kafe 6" },
+    { src: "/arkaplan2.png", alt: "Kafe 6" },
   ]
 
   return (

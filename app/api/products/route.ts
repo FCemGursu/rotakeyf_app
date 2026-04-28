@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Yetkisiz erişim' }, { status: 401 })
   }
 
-  const { name, description, price, imageUrl, inStock, categoryId } =
+  const { name, description, price, imageUrl, inStock, categoryId, subCategoryId } =
     await request.json()
 
   if (!name?.trim() || !categoryId) {
@@ -39,6 +39,7 @@ export async function POST(request: NextRequest) {
       imageUrl: imageUrl || null,
       inStock: inStock ?? true,
       categoryId: parseInt(categoryId),
+      subCategoryId: subCategoryId ? parseInt(subCategoryId) : null,
     },
     include: { category: true },
   })
