@@ -109,17 +109,9 @@ export function MotorShop({ categories }: { categories: Category[] }) {
       </section>
 
       {/* Ürün Grid */}
+      {activeCategory !== null && (
       <section className="py-14 px-4 bg-black">
         <div className="max-w-7xl mx-auto">
-
-          {activeCategory === null ? (
-            <div className="text-center py-20 border border-dashed border-border rounded-2xl">
-              <div className="text-5xl mb-4">🏍️</div>
-              <p className="text-white font-semibold text-lg mb-1">Kategori Seçin</p>
-              <p className="text-gray-500 text-sm">Ürünleri görüntülemek için yukarıdan bir kategori seçin.</p>
-            </div>
-          ) : (
-            <>
               {displayedProducts.length === 0 ? (
                 <div className="text-center py-20">
                   <p className="text-muted-foreground text-lg">
@@ -170,7 +162,6 @@ export function MotorShop({ categories }: { categories: Category[] }) {
                           <span className={`text-xs font-medium ${product.inStock ? "text-green-500" : "text-red-500"}`}>
                             {product.inStock ? "Stokta Var" : "Tükendi"}
                           </span>
-                         
                         </div>
                       </div>
                     </div>
@@ -201,10 +192,9 @@ export function MotorShop({ categories }: { categories: Category[] }) {
                   </a>
                 </div>
               </div>
-            </>
-          )}
         </div>
       </section>
+      )}
     </>
   )
 }
