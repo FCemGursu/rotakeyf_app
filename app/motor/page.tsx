@@ -33,6 +33,8 @@ export const metadata: Metadata = {
   },
 }
 
+export const dynamic = 'force-dynamic'
+
 export default async function MotorPage() {
   const [categories, listings] = await Promise.all([
     prisma.category.findMany({
