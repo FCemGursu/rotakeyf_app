@@ -12,7 +12,7 @@ import { prisma } from "@/lib/prisma"
 export const metadata: Metadata = {
   title: "Rotakeyf | Cafe & Motor — Eskişehir",
   description:
-    "Rotakeyf Cafe, Eskişehir'de motosiklet severler için özel tasarlanmış bir buluşma noktası. El yapımı kahveler, ev yemekleri, motosiklet aksesuarları ve satışlık ikinci el motorsikletlerle sizi bekliyoruz.",
+    "Rotakeyf Cafe, Eskişehir'de motosiklet severler için özel tasarlanmış bir buluşma noktası. El yapımı kahveler, ev yemekleri, motosiklet aksesuarları ve satılık ikinci el motorsikletlerle sizi bekliyoruz.",
   keywords: [
     "rotakeyf",
     "rotakeyf cafe eskişehir",

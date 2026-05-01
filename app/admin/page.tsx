@@ -383,19 +383,19 @@ export default function AdminPage() {
             }`}
           >
             <Bike className="w-4 h-4" />
-            Satışlıklar
+            Satılıklar
           </button>
         </div>
       </div>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Satışlıklar Tab */}
+        {/* Satılıklar Tab */}
         {activeTab === "satis" ? (
           <div className="lg:col-span-3 bg-card border border-border rounded-xl p-5">
             <div className="flex items-center justify-between mb-5">
               <div>
-                <h2 className="font-semibold text-foreground">Motor Satışlıkları</h2>
+                <h2 className="font-semibold text-foreground">Motor Satılıkları</h2>
                 <p className="text-xs text-muted-foreground mt-0.5">{motorListings.length} ilan</p>
               </div>
               <button

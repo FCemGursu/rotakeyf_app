@@ -12,13 +12,13 @@ import { prisma } from "@/lib/prisma"
 export const metadata: Metadata = {
   title: "Motor",
   description:
-    "Rotakeyf Motor — Eskişehir'de motosiklet aksesuarları, bakım ürünleri ve satışlık ikinci el motosikletler. Kask, eldiven, bot, ceket ve daha fazlası.",
+    "Rotakeyf Motor — Eskişehir'de motosiklet aksesuarları, bakım ürünleri ve satılık ikinci el motosikletler. Kask, eldiven, bot, ceket ve daha fazlası.",
   keywords: [
     "rotakeyf motor",
     "eskişehir motosiklet",
     "motosiklet aksesuarları eskişehir",
     "ikinci el motosiklet eskişehir",
-    "satışlık motosiklet",
+    "satılık motosiklet",
     "motor ekipmanları",
     "kask satış eskişehir",
   ],
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     canonical: "/motor",
   },
   openGraph: {
-    title: "Rotakeyf Motor | Aksesuar & Satışlık Motosikletler",
+    title: "Rotakeyf Motor | Aksesuar & Satılık Motosikletler",
     description:
-      "Eskişehir'de motosiklet aksesuarları ve satışlık ikinci el motosikletler için Rotakeyf Motor.",
+      "Eskişehir'de motosiklet aksesuarları ve satılık ikinci el motosikletler için Rotakeyf Motor.",
     url: "https://rotakeyf.com/motor",
   },
 }

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: "%s | Rotakeyf",
   },
   description:
-    "Rotakeyf, Eskişehir'de motosiklet tutkunlarının buluşma noktası. Özel kahveler, nefis yemekler ve ikinci el motosiklet satışıyla hizmetinizdeyiz. Kafe, motor aksesuarları ve satışlık motosikletler için bizi ziyaret edin.",
+    "Rotakeyf, Eskişehir'de motosiklet tutkunlarının buluşma noktası. Özel kahveler, nefis yemekler ve ikinci el motosiklet satışıyla hizmetinizdeyiz. Kafe, motor aksesuarları ve satılık motosikletler için bizi ziyaret edin.",
   keywords: [
     "rotakeyf",
     "rotakeyf cafe",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Rotakeyf | Cafe & Motosiklet — Eskişehir",
     description:
-      "Eskişehir'de motosiklet tutkunlarının buluşma noktası. Özel kahveler, lezzetli yemekler ve satışlık motosikletler.",
+      "Eskişehir'de motosiklet tutkunlarının buluşma noktası. Özel kahveler, lezzetli yemekler ve satılık motosikletler.",
     url: "https://rotakeyf.com",
     siteName: "Rotakeyf",
     locale: "tr_TR",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Rotakeyf | Cafe & Motosiklet — Eskişehir",
     description:
-      "Eskişehir'de motosiklet tutkunlarının buluşma noktası. Özel kahveler ve satışlık motosikletler.",
+      "Eskişehir'de motosiklet tutkunlarının buluşma noktası. Özel kahveler ve satılık motosikletler.",
     images: ["/rotayazı.png"],
   },
   icons: {

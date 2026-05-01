@@ -19,7 +19,7 @@ export function MotorSales({ listings }: { listings: MotorListing[] }) {
             Satılık Motosikletler
           </h2>
           <p className="text-muted-foreground">
-            İkinci el satışlık araçlarımız — görsele tıklayarak ilana ulaşabilirsiniz
+            İkinci el satılık araçlarımız — görsele tıklayarak ilana ulaşabilirsiniz
           </p>
         </div>
 
