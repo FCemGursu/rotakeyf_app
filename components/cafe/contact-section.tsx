@@ -20,7 +20,7 @@ export function ContactSection() {
     {
       icon: AtSign,
       title: "Sosyal Medya",
-      content: "@rotakeyfcafe",
+      content: "@rotakeyfmotocafe",
     },
   ]
 

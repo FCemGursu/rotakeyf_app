@@ -19,7 +19,7 @@ const contactInfo = [
   {
     icon: AtSign,
     title: "Sosyal Medya",
-    content: "@rotakeyfcafe",
+    content: "@rotakeyfmotocafe",
   },
 ]
 
