@@ -76,6 +76,9 @@ export const metadata: Metadata = {
       "Eskişehir'de motosiklet tutkunlarının buluşma noktası. Özel kahveler ve satışlık motosikletler.",
     images: ["/rotayazı.png"],
   },
+  icons: {
+    icon: "/alperem.png",
+  },
   robots: {
     index: true,
     follow: true,
