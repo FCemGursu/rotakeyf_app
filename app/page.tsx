@@ -28,6 +28,8 @@ export const metadata: Metadata = {
   },
 }
 
+export const dynamic = 'force-dynamic'
+
 export default async function Home() {
   const categories = await prisma.category.findMany({
     where: { type: "cafe" },
