@@ -19,6 +19,12 @@ export function Navbar() {
     { href: "#iletisim", label: "İletişim" },
   ]
 
+  const motorLinks = [
+    { href: "#hizmetlerimiz", label: "Hizmetlerimiz" },
+    { href: "#urunlerimiz", label: "Ürünlerimiz" },
+    { href: "#satilik-motosikletler", label: "Satılık Motosikletler" },
+  ]
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border overflow-visible">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
@@ -57,6 +63,20 @@ export function Navbar() {
             {!isMotorPage && (
               <div className="flex items-center gap-6">
                 {cafeLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
+
+            {isMotorPage && (
+              <div className="flex items-center gap-6">
+                {motorLinks.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
@@ -135,6 +155,21 @@ export function Navbar() {
             {!isMotorPage && (
               <div className="pt-3 border-t border-border space-y-2">
                 {cafeLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
+
+            {isMotorPage && (
+              <div className="pt-3 border-t border-border space-y-2">
+                {motorLinks.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}

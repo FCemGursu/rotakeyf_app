@@ -57,7 +57,7 @@ export function MotorServices() {
   }, [next])
 
   return (
-    <section className="py-16 px-4 bg-black border-t border-border">
+    <section id="hizmetlerimiz" className="py-16 px-4 bg-black border-t border-border scroll-mt-16">
       <div className="max-w-7xl mx-auto">
         {/* Başlık */}
         <div className="text-center mb-10">

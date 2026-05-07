@@ -12,7 +12,7 @@ export function MotorSales({ listings }: { listings: MotorListing[] }) {
   if (listings.length === 0) return null
 
   return (
-    <section className="py-16 px-4 border-t border-border">
+    <section id="satilik-motosikletler" className="py-16 px-4 border-t border-border scroll-mt-16">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">

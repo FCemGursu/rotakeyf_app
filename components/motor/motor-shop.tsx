@@ -55,7 +55,7 @@ export function MotorShop({ categories }: { categories: Category[] }) {
   return (
     <>
       {/* Kategori Filtreleri */}
-      <section className="py-14 px-4 bg-black border-t border-border">
+      <section id="urunlerimiz" className="py-14 px-4 bg-black border-t border-border scroll-mt-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Ürünlerimiz</h2>
